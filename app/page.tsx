@@ -5,7 +5,7 @@ import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 const fetchPosts = async (page: number) => {
-  const res = await fetch("/api/data");
+  const res = await fetch("/api/data?&_limit=20");
 
   const posts = await res.json();
 
@@ -37,20 +37,7 @@ export default function Home() {
           return allPages.length + 1;
         },
         initialData: {
-          pages: [
-            [
-              {
-                id: 1,
-                title: "Post 1",
-                body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-              },
-              {
-                id: 2,
-                title: "Post 2",
-                body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-              },
-            ],
-          ],
+          pages: [],
           pageParams: [1],
         },
       }
