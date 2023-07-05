@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await new Promise((resolve) => setTimeout(resolve, 2000)); // Add a 1000ms delay
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?&_limit=20`,
-    {
-      cache: "no-cache",
-    }
-  );
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+    cache: "no-cache",
+  });
 
   const posts = await response.json();
+
+  // Simulating a 1s delay before returning the response
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return NextResponse.json(posts);
 }
