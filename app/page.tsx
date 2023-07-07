@@ -6,7 +6,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 const fetchPosts = async (page: number) => {
   await new Promise((resolve) => setTimeout(resolve, 1000)); // Add a 1000ms delay
-  const res = await fetch("/api/data?&_limit=20");
+  const res = await fetch("/api/data");
 
   const posts = await res.json();
 
